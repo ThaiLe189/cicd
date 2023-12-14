@@ -14,7 +14,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 RUN --mount=type=cache,target=/root/.cache/pip pip3 install --no-cache-dir --upgrade pip setuptools wheel
 
-COPY ./app/requirements.txt ./
+COPY ./requirements.txt ./
 
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip3 install -r requirements.txt

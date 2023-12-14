@@ -1,8 +1,5 @@
 FROM python:3.10-slim as builder
 
-RUN mkdir /app
-WORKDIR /app
-
 RUN apt-get update && apt-get install --no-install-recommends --no-install-suggests -y \
     # curl \
     # libpcap-dev  \
@@ -17,7 +14,7 @@ ENV PATH="/opt/venv/bin:$PATH"
 
 RUN --mount=type=cache,target=/root/.cache/pip pip3 install --no-cache-dir --upgrade pip setuptools wheel
 
-COPY requirements.txt ./
+COPY ./app/requirements.txt ./
 
 RUN --mount=type=cache,target=/root/.cache/pip \
     pip3 install -r requirements.txt
@@ -32,6 +29,9 @@ RUN apt-get update && apt-get install --no-install-recommends --no-install-sugge
     # build-essential \
     # libglib2.0-0 \
     && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir /app
+WORKDIR /app
 
 COPY --from=builder /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"

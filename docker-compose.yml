@@ -1,0 +1,15 @@
+version: '3.7'
+services: 
+  api:
+    build:
+      context: app
+    command: gunicorn -c gunicorn.conf.py --log-config gunicorn.conf main:app
+    ports: 
+      - 1214:8871
+    stdin_open: true
+    tty: true
+    volumes:
+      - /var/log:/log
+    environment:
+      PYTHONPATH: .
+      PORT: 8871

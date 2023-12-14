@@ -20,6 +20,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file app/Dockerfile --tag my-image-name:$(date +%s)
     - name: Build the Docker image
-      run: docker build -t thaile1809/cicd-pipeline .
+      run: docker build -t thaile1809/cicd-practice .
     - name: Push to Dockerhub
-      run: docker push thaile1809/cicd-pipeline:latest
+      run: docker push thaile1809/cicd-practice:latest

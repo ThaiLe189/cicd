@@ -18,6 +18,6 @@ jobs:
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - name: Build the Docker image
-      run: docker build -t thaile1809/cicd-practice:latest ./app/Dockerfile
+      run: docker build -t thaile1809/cicd-practice:latest ./app
     - name: Push to Dockerhub
       run: docker push thaile1809/cicd-practice:latest

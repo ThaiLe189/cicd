@@ -11,6 +11,10 @@ jobs:
     runs-on: self-hosted
     steps:
     - uses: actions/checkout@v3
+    - name: Stop old docker container
+      run: sudo docker stop thaile1809/cicd-practice
+    - name: Delete Old Docker image
+      run: sudo docker rm thaile1809/cicd-practice
     - name: Pull Docker image
       run: sudo docker pull thaile1809/cicd-practice:latest 
     - name: Run Docker Container

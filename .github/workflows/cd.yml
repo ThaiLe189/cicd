@@ -12,9 +12,9 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Stop old docker container
-      run: sudo docker stop $(docker ps -q)
+      run: sudo docker stop $(sudo docker ps -q)
     - name: Delete Old Docker image
-      run: sudo docker rm $(docker ps -a -q)
+      run: sudo docker rm $(sudo docker ps -a -q)
     - name: Pull Docker image
       run: sudo docker pull thaile1809/cicd-practice:latest 
     - name: Run Docker Container
